@@ -1,0 +1,5 @@
+.env
+private/
+*.key
+*.tmp
+__pycache__/

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://streetproof.ai/schemas/ledger-checkpoint-v1.json",
+  "title": "StreetProof signed ledger checkpoint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "checkpoint_version",
+    "environment",
+    "checkpoint_date",
+    "checkpoint_type",
+    "created_at",
+    "first_observation_id",
+    "last_observation_id",
+    "leaf_count",
+    "merkle_root",
+    "last_ledger_hash",
+    "previous_manifest_sha256",
+    "hash_algorithm",
+    "merkle_algorithm",
+    "canonicalization_version",
+    "ledger_schema_version",
+    "signing_key_id",
+    "signature_algorithm",
+    "signature"
+  ],
+  "properties": {
+    "checkpoint_version": {
+      "const": "streetproof-ledger-checkpoint-v1"
+    },
+    "environment": {
+      "const": "production"
+    },
+    "checkpoint_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "checkpoint_type": {
+      "enum": [
+        "retrospective_baseline",
+        "daily"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "first_observation_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "last_observation_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "leaf_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "merkle_root": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "last_ledger_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "previous_manifest_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "hash_algorithm": {
+      "const": "sha256"
+    },
+    "merkle_algorithm": {
+      "const": "pairwise-sha256-duplicate-odd-v1"
+    },
+    "canonicalization_version": {
+      "const": "streetproof-checkpoint-json-v1"
+    },
+    "ledger_schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "signing_key_id": {
+      "type": "string",
+      "pattern": "^ed25519:[a-f0-9]{16}$"
+    },
+    "signature_algorithm": {
+      "const": "ed25519"
+    },
+    "signature": {
+      "type": "string",
+      "contentEncoding": "base64"
+    }
+  }
+}
