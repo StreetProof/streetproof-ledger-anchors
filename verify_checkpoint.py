@@ -42,7 +42,7 @@ def main() -> int:
     parser.add_argument(
         "--public-key",
         type=Path,
-        default=Path("keys/streetproof-ledger-ed25519.pem"),
+        default=Path("keys/streetproof-ledger-ed25519.pub"),
     )
     args = parser.parse_args()
 

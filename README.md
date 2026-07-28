@@ -22,7 +22,7 @@ cover only newly appended ledger rows and link to the preceding manifest.
 
 ```text
 keys/
-  streetproof-ledger-ed25519.pem
+  streetproof-ledger-ed25519.pub
 checkpoints/
   YYYY-MM-DD/
     manifest.json
